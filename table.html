@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <meta lang="en" charset="utf-8">
+        <title>Mileage Table</title>
+        <script src="functions.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <h1 class="main_header header">Mileage Cost Compare</h1>
+        </div>
+        <div class="table_section" style="display:none">
+            <table class="table">
+                <tr id="row1">
+                    <td id="r1c1"></td>
+                    <td id="r1c2"></td>
+                    <td id="r1c3"></td>
+                    <td id="r1c4"></td>
+                    <td id="r1c5"></td>
+                    <td id="r1c6"></td>
+                    <td id="r1c7"></td>
+                    <td id="r1c"></td>
+                    <td id="r1c"></td>
+                    <td id="r1c10"></td>
+                    <td id="r1c11"></td>
+                </tr>
+                <tr id="row2">
+                    <td id="column1">Mpg1</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row3">
+                    <td id="column1">Mpg2</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row4">
+                    <td id="column1">Mpg3</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row5">
+                    <td id="column1">Mpg4</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row6">
+                    <td id="column1">Mpg5</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row7">
+                    <td id="column1">Mpg6</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row8">
+                    <td id="column1">Mpg7</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row9">
+                    <td id="column1">Mpg8</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row10">
+                    <td id="column1">Mpg9</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+                <tr id="row11">
+                    <td id="column1">Mpg10</td>
+                    <td id="column2"></td>
+                    <td id="column3"></td>
+                    <td id="column4"></td>
+                    <td id="column5"></td>
+                    <td id="column6"></td>
+                    <td id="column7"></td>
+                    <td id="column8"></td>
+                    <td id="column9"></td>
+                    <td id="column10"></td>
+                    <td id="column11"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="form">
+            <p class="form_desc">Input any number of Cars and gas millage</p>
+            <p class="form_miles">Miles Per Year:<input type="text" id="input_miles"></p>
+            <p class="form_years">Number of Years:<input type="text" id="input_years"></p>
+            <p class="form_gas">Expected Gas Price (per gallon):<input type="text" id="input_gas"></p>
+            <table class="form form_table">
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg1" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price1" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg2" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price2" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg3" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price3" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg4" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price4" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg5" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price5" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg6" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price6" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg7" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price7" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg8" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price8" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg9" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price9" value=""></td>
+                </tr>
+                <tr>
+                    <td>Gas Millage (mpg):<input type="text" id="input_mpg10" value=""></td>
+                    <td>Car Price ($):<input type="text" id="input_price10" value=""></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
