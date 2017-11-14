@@ -9,15 +9,25 @@ var numPrices = 0;  //x val
 var numMPG = 0;     //y val
 
 function doEverything(){
-    var prices = readPrices();
-    var mpgs = readMpg();
-    var years = readYears();
-    var miles = readMiles();
-    var gasprice = readGasPrice();
+    try{
+        var prices = readPrices();
+        var mpgs = readMpg();
+        var years = readYears();
+        var miles = readMiles();
+        var gasprice = readGasPrice();
 
-    var tableMatrix = calcTable(prices, mpgs, years, miles, gasprice);
-    
-    displayTable(tableMatrix);
+        var tableMatrix = calcTable(prices, mpgs, years, miles, gasprice);
+
+        if(tableMatrix == FAIL_STRING){
+            return;
+        }
+        
+        displayTable(tableMatrix);
+        hideForm();
+    }
+    catch(e){
+        window.alert(e.message);
+    }
 }
 
 function readPrices(){
@@ -130,9 +140,9 @@ function calcTable(prices, mpgs, years, miles, gasprice){
 
     var milesPerMonth = miles / 12;
 
-    for(x = 1; x < numPrices; x++){
+    for(x = 1; x <= numPrices; x++){
         var price = prices[x];
-        for(y = 1; y < numMPG; y++){
+        for(y = 1; y <= numMPG; y++){
             var mpg = mpgs[y];
             tableMatrix[x][0] = mpg;
 
@@ -150,13 +160,32 @@ function calcTable(prices, mpgs, years, miles, gasprice){
 }
 
 function displayTable(tableMatrix){
-    if(tableMatrix == FAIL_STRING){
-        return;
-    }
-
     for(x = 0; x <= numPrices; x++){
         for(y = 0; y <= numPrices; y++){
-            
+            var cellID = "r" + x + "c" + y;
+            document.getElementById(cellID).innerHTML = tableMatrix[x][y];
         }
     }
+    document.getElementById("table_div").style.display = "block";
+    clearUnusedCells();
+}
+
+function clearUnusedCells(){
+    for(x = (numMPG + 1); x <= 11; x ++){
+        var rowID = "row" + x;
+        document.getElementById(rowID).style.display = "none";
+    }
+
+    for(y = (numPrices + 1); y <= 11; y++){
+        var columnClass = "column" + y;
+        var columnCells = document.getElementsByClassName(columnClass);
+
+        for(column in columnCells){
+            column.style.display = "block";
+        }
+    }
+}
+
+function hideForm(){
+    document.getElementById("form_div").style.display = "none";
 }
