@@ -1,3 +1,9 @@
+<!--
+Alexander Buchanan
+ID: 01408299
+email: alexander_buchanan@student.uml.edu
+gitHub link: https://github.com/ajbuchanan/gui1f17_hw4
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -158,10 +164,12 @@
             </table>
         </div>
         <div class="form" id="form_div">
-            <p class="form_desc">Input any number of Cars and gas millage</p>
-            <p class="form_miles">Miles Per Year:<input type="text" id="input_miles"></p>
-            <p class="form_years">Number of Years:<input type="text" id="input_years"></p>
-            <p class="form_gas">Expected Gas Price (per gallon):<input type="text" id="input_gas"></p>
+            <div class="upper_form">
+                <p class="form_desc">Input any number of Cars and gas millage</p>
+                <p class="form_miles">Miles Per Year:<input type="text" id="input_miles"></p>
+                <p class="form_years">Number of Years:<input type="text" id="input_years"></p>
+                <p class="form_gas">Expected Gas Price (per gallon):<input type="text" id="input_gas"></p>
+            </div>
             <table class="form form_table">
                 <tr>
                     <td>Gas Millage (mpg):<input type="text" id="input_mpg1" value=""></td>
@@ -204,7 +212,7 @@
                     <td>Car Price ($):<input type="text" id="input_price10" value=""></td>
                 </tr>
             </table>
-            <button type="button" onclick="doEverything()">Submit</button>
+            <button class="button" onclick="doEverything()"><span>Submit</span></button>
         </div>
     </body>
 </html>

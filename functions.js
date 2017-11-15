@@ -1,3 +1,11 @@
+/*
+Alexander Buchanan
+ID: 01408299
+email: alexander_buchanan@student.uml.edu.
+gitHub link: https://github.com/ajbuchanan/gui1f17_hw4
+*/
+
+// global vars I want access to through out
 var PRICE_INPUT = "input_price";
 var MPG_INPUT = "input_mpg";
 var YEAR_INPUT = "input_years";
@@ -25,6 +33,7 @@ function doEverything(){
     hideForm();
 }
 
+//Following set of functions are all about taking in the input and parsing it to be usable
 function readPrices(){
     try{
         var priceArray = new Array();
@@ -133,6 +142,7 @@ function readGasPrice(){
     }
 }
 
+//Main function that computes display information
 function calcTable(prices, mpgs, years, miles, gasprice){
     if(prices == FAIL_STRING){
         return FAIL_STRING
@@ -184,6 +194,7 @@ function calcTable(prices, mpgs, years, miles, gasprice){
     }
 }
 
+//Function to display the table
 function displayTable(tableMatrix){
     try{
         for(x = 0; x <= numPrices; x++){
@@ -200,6 +211,7 @@ function displayTable(tableMatrix){
     }
 }
 
+//Makes sure that the parts of the table we dont care about arent shown
 function clearUnusedCells(){
     try{
         for(x = (numMPG + 1); x <= 11; x ++){

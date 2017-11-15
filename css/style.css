@@ -1,0 +1,90 @@
+/*
+Name: Alexander Buchanan
+ID: 01408299
+Email: alexander_buchanan@student.uml.edu
+gitHub link: https://github.com/ajbuchanan/gui1f17_hw4
+*/
+body{
+    background-color: darkslategrey;
+    color: black;
+    font-family: Verdana, Geneva, sans-serif; 
+}
+
+h1{
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.form{
+    background: lightblue;
+    border-radius: 25px;
+    padding: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.upper_form{
+    text-align: center;
+}
+
+input{
+    margin: 10px;
+}
+
+table{
+    border-collapse: collapse;
+    background: lightblue;
+    padding: 50px;
+    text-align: center;
+}
+
+table, td{
+    border-style: solid;
+}
+
+/*
+Following button effect taken from W3Schools 
+link: https://www.w3schools.com/css/css3_buttons.asp
+*/
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
