@@ -9,107 +9,127 @@ var numPrices = 0;  //x val
 var numMPG = 0;     //y val
 
 function doEverything(){
-    try{
-        var prices = readPrices();
-        var mpgs = readMpg();
-        var years = readYears();
-        var miles = readMiles();
-        var gasprice = readGasPrice();
+    var prices = readPrices();
+    var mpgs = readMpg();
+    var years = readYears();
+    var miles = readMiles();
+    var gasprice = readGasPrice();
 
-        var tableMatrix = calcTable(prices, mpgs, years, miles, gasprice);
+    var tableMatrix = calcTable(prices, mpgs, years, miles, gasprice);
 
-        if(tableMatrix == FAIL_STRING){
-            return;
-        }
-        
-        displayTable(tableMatrix);
-        hideForm();
+    if(tableMatrix == FAIL_STRING){
+        return;
     }
-    catch(e){
-        window.alert(e.message);
-    }
+    
+    displayTable(tableMatrix);
+    hideForm();
 }
 
 function readPrices(){
-    var priceArray = new Array();
-    for(i = 1; i < 11; i++){
-        var input = document.getElementById(PRICE_INPUT+i);
-        if(input && input.value){
-            var price = parseFloat(input.value);
-            if(!isNaN(price)){
-                priceArray.push(price);
-                numPrices++;
-            }
-            else{
-                window.alert("Price "+ i +" is invalid");
-                return FAIL_STRING;
+    try{
+        var priceArray = new Array();
+        for(i = 1; i < 11; i++){
+            var input = document.getElementById(PRICE_INPUT+i);
+            if(input && input.value){
+                var price = parseFloat(input.value);
+                if(!isNaN(price)){
+                    priceArray.push(price);
+                    numPrices++;
+                }
+                else{
+                    window.alert("Price "+ i +" is invalid");
+                    return FAIL_STRING;
+                }
             }
         }
+        return priceArray;
     }
-    return priceArray;
+    catch(err){
+        window.alert("readPrices: "+err.message);
+    }
 }
 
 function readMpg(){
-    var mpgArray = new Array();
-    for(i = 1; i < 11; i++){
-        var input = document.getElementById(MPG_INPUT+i);
+    try{
+        var mpgArray = new Array();
+        for(i = 1; i < 11; i++){
+            var input = document.getElementById(MPG_INPUT+i);
+            if(input && input.value){
+                var mpg = parseFloat(input.value);
+                if(!isNaN(mpg)){
+                    mpgArray.push(mpg);
+                    numMPG++;
+                }
+                else{
+                    window.alert("MPG "+ i +" is invalid");
+                    return FAIL_STRING;
+                }
+            }
+        }
+        return mpgArray;
+    }
+    catch(err){
+        window.alert("readMpg: "+err.message);
+    }
+}
+
+function readMiles(){
+    try{
+        var input = document.getElementById(MILES_INPUT);
+        var miles = 0;
         if(input && input.value){
-            var mpg = parseFloat(input.value);
-            if(!isNaN(mpg)){
-                mpgArray.push(mpg);
-                numMPG++;
+            miles = parseFloat(input.value);
+            if(!isNaN(miles)){
+                return miles;
             }
             else{
-                window.alert("MPG "+ i +" is invalid");
+                window.alert("Miles per year is invalid");
                 return FAIL_STRING;
             }
         }
     }
-    return mpgArray;
-}
-
-function readMiles(){
-    var input = document.getElementById(MILES_INPUT);
-    var miles = 0;
-    if(input && input.value){
-        miles = parseFloat(input.value);
-        if(!isNaN(miles)){
-            return miles;
-        }
-        else{
-            window.alert("Miles per year is invalid");
-            return FAIL_STRING;
-        }
+    catch(err){
+        window.alert("readMiles: "+err.message);
     }
 }
 
 function readYears(){
-    var input = document.getElementById(YEAR_INPUT);
-    var years = 0;
-    if(input && input.value){
-        years = parseFloat(input.value);
-        if(!isNaN(years)){
-            return years;
+    try{
+        var input = document.getElementById(YEAR_INPUT);
+        var years = 0;
+        if(input && input.value){
+            years = parseFloat(input.value);
+            if(!isNaN(years)){
+                return years;
+            }
+            else{
+                window.alert("Number of years is invalid");
+                return FAIL_STRING;
+            }
         }
-        else{
-            window.alert("Number of years is invalid");
-            return FAIL_STRING;
-        }
+    }
+    catch(err){
+        window.alert("readYears: "+err.message);
     }
 }
 
 function readGasPrice(){
-    var input = document.getElementById(GAS_INPUT);
-    var gas = 0;
-    if(input && input.value){
-        gas = parseFloat(input.value);
-        if(!isNaN(gas)){
-            return gas;
+    try{
+        var input = document.getElementById(GAS_INPUT);
+        var gas = 0;
+        if(input && input.value){
+            gas = parseFloat(input.value);
+            if(!isNaN(gas)){
+                return gas;
+            }
+            else{
+                window.alert("Gas Price is invalid");
+                return FAIL_STRING;
+            }
         }
-        else{
-            window.alert("Gas Price is invalid");
-            return FAIL_STRING;
-        }
+    }
+    catch(err){
+        window.alert("readGasPrice: "+err.message);
     }
 }
 
@@ -130,59 +150,74 @@ function calcTable(prices, mpgs, years, miles, gasprice){
         return FAIL_STRING
     }
 
-    var tableMatrix = new Array(numPrices);
-    for(i = 0; i < numMPG; i++){
-        tableMatrix.push(new Array(numMPG + 1));
-    }
-
-    prices.push("Comparison");
-    tableMatrix.push(prices);
-
-    var milesPerMonth = miles / 12;
-
-    for(x = 1; x <= numPrices; x++){
-        var price = prices[x];
-        for(y = 1; y <= numMPG; y++){
-            var mpg = mpgs[y];
-            tableMatrix[x][0] = mpg;
-
-            var gasCostPerMonth = (milesPerMonth / mpg) * gasprice;
-            var carPaymentPerMonth = price / (years * 12);
-            var pricePerMonth = gasCostPerMonth + carPaymentPerMonth;
-            var pricePerMile = pricePerMonth / milesPerMonth;
-            var cellString = "$/mile:" + pricePerMile + ", $/month:" + pricePerMonth;
-
-            tableMatrix[x][y] = cellString;
+    try{
+        var tableMatrix = new Array(numPrices);
+        for(i = 0; i < numMPG; i++){
+            tableMatrix[i] = [];
         }
-    }
 
-    return tableMatrix;
+        prices.push("Comparison");
+        tableMatrix.push(prices);
+
+        var milesPerMonth = miles / 12;
+
+        for(x = 1; x <= numPrices; x++){
+            var price = prices[x];
+            for(y = 1; y <= numMPG; y++){
+                var mpg = mpgs[y];
+                tableMatrix[x][0] = mpg;
+
+                var gasCostPerMonth = (milesPerMonth / mpg) * gasprice;
+                var carPaymentPerMonth = price / (years * 12);
+                var pricePerMonth = gasCostPerMonth + carPaymentPerMonth;
+                var pricePerMile = pricePerMonth / milesPerMonth;
+                var cellString = "$/mile:" + pricePerMile + ", $/month:" + pricePerMonth;
+
+                tableMatrix[x][y] = cellString;
+            }
+        }
+
+        return tableMatrix;
+    }
+    catch(err){
+        window.alert("calcTable: "+err.message);
+    }
 }
 
 function displayTable(tableMatrix){
-    for(x = 0; x <= numPrices; x++){
-        for(y = 0; y <= numPrices; y++){
-            var cellID = "r" + x + "c" + y;
-            document.getElementById(cellID).innerHTML = tableMatrix[x][y];
+    try{
+        for(x = 0; x <= numPrices; x++){
+            for(y = 0; y <= numMPG; y++){
+                var cellID = "r" + x + "c" + y;
+                document.getElementById(cellID).innerHTML = tableMatrix[x][y];
+            }
         }
+        document.getElementById("table_div").style.display = "block";
+        clearUnusedCells();
     }
-    document.getElementById("table_div").style.display = "block";
-    clearUnusedCells();
+    catch(err){
+        window.alert("displayTable: numPrices:"+numPrices+" numMPG:"+numMPG+" error: "+err.message);
+    }
 }
 
 function clearUnusedCells(){
-    for(x = (numMPG + 1); x <= 11; x ++){
-        var rowID = "row" + x;
-        document.getElementById(rowID).style.display = "none";
-    }
-
-    for(y = (numPrices + 1); y <= 11; y++){
-        var columnClass = "column" + y;
-        var columnCells = document.getElementsByClassName(columnClass);
-
-        for(column in columnCells){
-            column.style.display = "block";
+    try{
+        for(x = (numMPG + 1); x <= 11; x ++){
+            var rowID = "row" + x;
+            document.getElementById(rowID).style.display = "none";
         }
+
+        for(y = (numPrices + 1); y <= 11; y++){
+            var columnClass = "column" + y;
+            var columnCells = document.getElementsByClassName(columnClass);
+
+            for(column in columnCells){
+                column.style.display = "block";
+            }
+        }
+    }
+    catch(err){
+        window.alert("clearUnusedCells: "+err.message);
     }
 }
 
